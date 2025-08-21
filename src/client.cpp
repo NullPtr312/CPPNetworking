@@ -45,7 +45,11 @@ int main(int argc, const char **argv)
     }
 
     ENetAddress address;
-    enet_address_set_host(&address, "127.0.0.1");
+
+    std::string ip_address;
+    std::cout << "Connect to what IP: ";
+    std::cin >> ip_address; 
+    enet_address_set_host(&address, ip_address.c_str());
     address.port = 1234;
 
     ENetPeer *peer = enet_host_connect(client, &address, 2, 0);
